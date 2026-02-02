@@ -2,35 +2,34 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Witchy Wheel of the Year</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<button id="themeToggle" class="theme-toggle">☾ Dark Altar</button>
+  <div class="wheel-wrapper">
 
-<div class="wheel-wrapper">
+    <div class="celtic-border"></div>
 
-  <div class="celtic-border"></div>
+    <div class="wheel" id="wheel">
 
-  <div class="wheel" id="wheel">
+      <div class="ring moon"></div>
+      <div class="ring sabbats"></div>
+      <div class="ring zodiac"></div>
+      <div class="ring houses"></div>
+      <div class="ring seasons"></div>
+      <div class="ring core"></div>
 
-    <div class="ring moon"></div>
-    <div class="ring sabbats"></div>
-    <div class="ring zodiac"></div>
-    <div class="ring houses"></div>
-    <div class="ring seasons"></div>
-    <div class="ring core"></div>
+      <div class="glow-ring"></div>
+      <div class="moon-glow" id="moonGlow"></div>
 
-    <div class="glow-ring"></div>
-    <div class="moon-glow" id="moonGlow"></div>
+      <div class="center-glyph">✦</div>
 
-    <div class="center-glyph">✦</div>
+      <!--<div class="info-panel" id="infoPanel"></div>-->
 
-    <!--<div class="info-panel" id="infoPanel"></div>-->
-
+    </div>
   </div>
-</div>
 
 <script src="script.js"></script>
 </body>
