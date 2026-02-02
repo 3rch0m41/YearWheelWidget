@@ -1,0 +1,226 @@
+/* ------------------ THEME SYSTEM ------------------ */
+
+:root {
+  --bg: #05040a;
+  --text: #f7f3e9;
+  --muted: #6b607a;
+  --glow: #ffd88a;
+  --accent: #f5d57b;
+
+  --sabbat: #e6c27a;
+  --zodiac: #bba4d6;
+  --house: #d4c4ff;
+  --season: #8fbf9f;
+  --moon: #cccccc;
+}
+
+.dark-altar {
+  --bg: #000000;
+  --text: #e8e6df;
+  --muted: #4a4742;
+  --glow: #c79b3b;
+  --accent: #d4b46a;
+
+  --sabbat: #d4b46a;
+  --zodiac: #a89cc4;
+  --house: #c7b8e8;
+  --season: #7aa88d;
+  --moon: #d0d0d0;
+}
+
+/* ------------------ RESPONSIVE BASE ------------------ */
+
+html {
+  font-size: 1vmin;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 20% 10%, #1b1026 0, var(--bg) 55%, #000 100%);
+  color: var(--text);
+  font-family: system-ui, sans-serif;
+}
+
+/* ------------------ THEME TOGGLE BUTTON ------------------ */
+
+.theme-toggle {
+  position: fixed;
+  top: 2rem;
+  left: 2rem;
+  padding: 1rem 1.6rem;
+  font-size: 1.4rem;
+  background: var(--accent);
+  color: #000;
+  border: none;
+  border-radius: 0.6rem;
+  cursor: pointer;
+  z-index: 9999;
+  box-shadow: 0 0 1rem rgba(0,0,0,0.4);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.dark-altar .theme-toggle {
+  background: #222;
+  color: var(--accent);
+  box-shadow: 0 0 1rem rgba(255,215,130,0.4);
+}
+
+/* ------------------ WHEEL LAYOUT ------------------ */
+
+.wheel-wrapper {
+  width: 90vmin;
+  height: 90vmin;
+  max-width: 820px;
+  max-height: 820px;
+  position: relative;
+}
+
+.celtic-border {
+  position: absolute;
+  inset: -16%;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/0/0c/Celtic_knot_border.png');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.36;
+  pointer-events: none;
+  border-radius: 50%;
+  filter: drop-shadow(0 0 14px rgba(255,215,130,0.35));
+}
+
+.wheel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle, #120c1b 0, var(--bg) 60%, #000 100%);
+  border: 0.3rem solid rgba(123,92,163,0.9);
+  box-shadow: 0 10px 60px rgba(0,0,0,0.8);
+}
+
+/* ------------------ RINGS (MATCHING YOUR RADII) ------------------ */
+
+.ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 0.2rem solid rgba(245,213,123,0.12);
+  pointer-events: none;
+}
+
+.ring.moon    { inset: 0%; }
+.ring.sabbats { inset: 10%; }
+.ring.zodiac  { inset: 20%; }
+.ring.houses  { inset: 28%; }
+.ring.seasons { inset: 36%; }
+.ring.core    { inset: 44%; border-style: dashed; }
+
+/* ------------------ SECTION LINES ------------------ */
+
+.section-line {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 0.2rem;
+  height: 100%;
+  background: rgba(255,215,130,0.18);
+  transform-origin: 50% 50%;
+  pointer-events: none;
+}
+
+/* ------------------ GLOW ------------------ */
+
+.glow-ring {
+  position: absolute;
+  inset: 10%;
+  border-radius: 50%;
+  pointer-events: none;
+  box-shadow: 0 0 40px rgba(245,213,123,0.12);
+}
+
+.moon-glow {
+  position: absolute;
+  inset: -5%;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .35s ease;
+  box-shadow: 0 0 40px rgba(255,255,255,0.12),
+              0 0 90px rgba(180,180,255,0.18);
+}
+.moon-glow.active { opacity: 1; }
+
+/* ------------------ CENTER SYMBOL ------------------ */
+
+.center-glyph {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 14%;
+  height: 14%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(245,213,123,0.04), rgba(0,0,0,0.35));
+  color: var(--accent);
+  font-size: 4rem;
+  border: 0.2rem solid rgba(245,213,123,0.28);
+}
+
+/* ------------------ LABELS ------------------ */
+
+.label {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform-origin: center;
+  text-align: center;
+  white-space: nowrap;
+  color: var(--muted);
+  transition: 0.25s ease;
+}
+
+.label .main {
+  display: block;
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.label .sub {
+  display: block;
+  font-size: 1rem;
+  opacity: .85;
+  letter-spacing: .06em;
+}
+
+/* Colors */
+.label.sabbat { color: var(--sabbat); }
+.label.zodiac { color: var(--zodiac); }
+.label.house  { color: var(--house); }
+.label.season { color: var(--season); }
+.label.moon   { color: var(--moon); }
+
+.label.active {
+  color: var(--glow);
+  text-shadow: 0 0 10px rgba(255,220,140,0.9);
+  transform: translate(-50%, -50%) scale(1.06);
+}
+
+/* ------------------ INFO PANEL ------------------ */
+
+.info-panel {
+  position: absolute;
+  bottom: -8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  text-align: center;
+  color: var(--accent);
+  font-size: 1.4rem;
+}
